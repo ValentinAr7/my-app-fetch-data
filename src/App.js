@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
+import { useEffect } from 'react';
+
 import './App.css';
 
 function App() {
+  
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'd784bbf8bemsh937dbecae345d21p133f8ejsne9677a6edd2d',
+      'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=tt0001702%2Ctt0001856%2Ctt0001856', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+  
   return (
+
+
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <form>
+        <input type='text'></input>
+        <button type='submit'>Submit</button>
+      </form>
+
     </div>
   );
 }
