@@ -5,6 +5,9 @@ import './App.css';
 
 function App() {
   
+  const [query, setQuery] = useState('')        //useState for the input field
+  const [container, setContaier] = useState([])   //use state for the array including all items
+
   const options = {
     method: 'GET',
     headers: {
@@ -13,28 +16,30 @@ function App() {
     }
   };
   
-  fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&category%5B0%5D=generic-foods&health%5B0%5D=alcohol-free', options)
+  fetch(`https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&category%5B0%5D=generic-foods&health%5B0%5D=+${query}`, options)
     .then(response => {return response.json()} )
-    .then(setContaier(data.hints))    //set the data from the API into the empty array using UseStete.
+    .then(data => setContaier(data.hints))    //set the data from the API into the empty array using UseStete.
     .then(response => console.log(response))
     .catch(err => console.error(err));
 
 
-    const [query, setQuery] = useState('')
-    const [container, setContaier] = useState([])
+
 
     function onSubmitHandler(e){
 
     }
 
-
-  
   return (
 
     <div className="App">
 
       <form>
-        <input type='text'></input>
+        
+        
+        {/* value = current text typed into the box. */}
+        <input type='text' value={query}></input>     
+
+
         <button type='submit'>Submit</button>
       </form>
 
