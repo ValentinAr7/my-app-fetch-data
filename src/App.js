@@ -14,7 +14,7 @@ function App() {
   };
   
   fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&category%5B0%5D=generic-foods&health%5B0%5D=alcohol-free', options)
-    .then(response => response.json())
+    .then(response => {return response.json()} )
     .then(data => console.log(data.hints))
     .then(response => console.log(response))
     .catch(err => console.error(err));
