@@ -15,13 +15,17 @@ function App() {
   
   fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&category%5B0%5D=generic-foods&health%5B0%5D=alcohol-free', options)
     .then(response => {return response.json()} )
-    .then(data => console.log(data.hints))
+    .then(setContaier(data.hints))    //set the data from the API into the empty array using UseStete.
     .then(response => console.log(response))
     .catch(err => console.error(err));
 
 
     const [query, setQuery] = useState('')
-    const [container, ueContaier] = useState([])
+    const [container, setContaier] = useState([])
+
+    function onSubmitHandler(e){
+
+    }
 
 
   
