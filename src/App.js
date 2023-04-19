@@ -7,6 +7,12 @@ function App() {
   
   const [query, setQuery] = useState('')        //useState for the input field
   const [container, setContaier] = useState([])   //use state for the array including all items
+  const [endPoint, setEndPoint] = useState('')
+
+
+  useEffect(() => {
+
+
 
   const options = {
     method: 'GET',
@@ -19,15 +25,20 @@ function App() {
   fetch(`https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&category%5B0%5D=generic-foods&health%5B0%5D=+${query}`, options)
     .then(response => {return response.json()} )
     .then(data => setContaier(data.hints))    //set the data from the API into the empty array using UseStete.
-    .then(response => console.log(response))
     .catch(err => console.error(err));
+
+  }, [query])
 
 
 
 
     function onChangeHandler(e){
       setQuery(e.target.value)
+    }
 
+    function onSubmitHandler(e){
+      e.preventDefault()
+      setEndPoint(query)
     }
 
   return (
