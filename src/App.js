@@ -25,7 +25,8 @@ function App() {
 
 
 
-    function onSubmitHandler(e){
+    function onChangeHandler(e){
+      setQuery(e.target.value)
 
     }
 
@@ -37,7 +38,7 @@ function App() {
         
         
         {/* value = current text typed into the box. */}
-        <input type='text' value={query}></input>     
+        <input type='text' value={query} onChange={onChangeHandler}></input>     
 
 
         <button type='submit'>Submit</button>
