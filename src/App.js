@@ -44,6 +44,13 @@ function App() {
         <button type='submit'>Submit</button>
       </form>
 
+
+      {container.map((item) => {
+        return(
+          <p>{item.food.label}</p>
+        )
+      })}
+
     </div>
   );
 }
